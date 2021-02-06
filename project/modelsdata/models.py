@@ -1,8 +1,9 @@
 from django.db import models
 from django.urls import reverse
 
+
 class Predictionmodel(models.Model):
-    slug = models.SlugField() # Для создания своего URL адреса
+    slug = models.SlugField()  # Для создания своего URL адреса
     title = models.CharField(max_length=120)
     comment = models.TextField(blank=True, verbose_name='Комментарий')
     img = models.ImageField(default='default.png', upload_to='model_images', blank=True, verbose_name='Изображение',
@@ -19,6 +20,7 @@ class Predictionmodel(models.Model):
         verbose_name = 'Модель'
         verbose_name_plural = 'Модели'
         ordering = ['title']
+
 
 class Predictionrequest(models.Model):
     slug = models.SlugField()  # Для создания своего URL адреса
