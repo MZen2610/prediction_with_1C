@@ -28,13 +28,13 @@ class Predictionrequest(models.Model):
     comment = models.TextField(blank=True, verbose_name='Комментарий')
     predictionmodel = models.ForeignKey(Predictionmodel, on_delete=models.SET_NULL, null=True)
     number = models.IntegerField()
-    addres_url = models.URLField(max_length=250, verbose_name='url-адрес', blank=True)
+    addres_http = models.CharField(max_length=250, verbose_name='http-адрес', blank=True)
 
     def __str__(self):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('lesson-detail', kwargs={'slug': self.predictionmodel.slug, 'lesson_slug': self.slug})
+        return reverse('request-detail', kwargs={'slug': self.predictionmodel.slug, 'request_slug': self.slug})
 
     class Meta:
         verbose_name = 'Запрос'

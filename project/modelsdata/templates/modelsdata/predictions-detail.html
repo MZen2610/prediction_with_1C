@@ -1,0 +1,23 @@
+{% extends 'modelsdata/main-layout.html' %}
+{% block main_section %}
+
+    <div class="main-block">
+        <div class="one-modeldata">
+            <h3>{{ object.title }}</h3>
+
+            {% if object.img %}
+            <img src="{{ object.img.url }}" alt="{{ object.title }}" width="240px">
+            {% else %}
+            <img src="/media/default.png" alt="{{ object.title }}" width="240px">
+            {% endif %}
+        </div>
+
+        <div class="aside-modeldata">
+            <h3>Модель предсказания - {{ title }}</h3>
+            <p>{{ comm }}</p>
+            <p>{{ addres }}</p>
+
+        </div>
+    </div>
+
+{% endblock %}

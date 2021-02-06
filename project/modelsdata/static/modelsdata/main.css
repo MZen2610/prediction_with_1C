@@ -2,7 +2,7 @@ body {
     background: #fafafa;
 	}
 
-.modelsdata {
+.modelsdata, .main-block{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -16,6 +16,13 @@ body {
 }
 
 .modelsdata .modeldata img {width: 100%}
+
+.main-block {
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.one-modeldata {margin-right: 100px}
 
 footer {
     width: 80%;

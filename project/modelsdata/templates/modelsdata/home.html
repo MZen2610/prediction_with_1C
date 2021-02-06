@@ -14,7 +14,8 @@
         <img src="/media/default.png" alt="{{ model.title }}">
         {% endif %}
 
-        <a href="#" class="btn btn-warning mt-3">Посмотреть</a>
+<!--        передадим функцию из модели в которой slug-->
+        <a href="{{ model.get_absolute_url }}" class="btn btn-warning mt-3">Посмотреть</a>
 
     </div>
 
