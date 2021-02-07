@@ -15,10 +15,32 @@
     <div class="aside-modeldata">
         <h3>Модель предсказания - {{ title }}</h3>
         <p>{{ comm }}</p>
+
+<!--        // если курс бесплатный то показываем этот урок-->
+        {% if object.free == True %}
+
         <p><b>Http запрос к 1С</b><br>
             <input type="text" size="60" value="{{ addres }}">
         </p>
         <p><input type="submit" value="Отправить"></p>
+
+<!--        // если пользователь не авторизован то отсылаем его регаться-->
+        {% elif user.is_authenticated == False %}
+        <p><a href="{% url 'reg' %}">Зарегистрируйтесь</a> на сайте и купите
+            подписку, чтобы просмотреть этот курс</p>
+<!--        // если у пользователя бесплатный пакет то отсылаем его платить деньги-->
+        {% elif user.profile.account_type == "Бесплатный пакет" %}
+        <p>Необходимо купить <a href="{% url 'tarrifs' %}">подписку</a> на
+            сайте, чтобы просмотреть этот курс</p>
+<!--        // иначе показываем платный контент-->
+        {% else %}
+
+         <p><b>Http запрос к 1С</b><br>
+            <input type="text" size="60" value="{{ addres }}">
+        </p>
+        <p><input type="submit" value="Отправить"></p>
+
+        {% endif %}
 
     </div>
 </div>

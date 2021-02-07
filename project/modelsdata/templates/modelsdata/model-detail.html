@@ -16,12 +16,30 @@
     <div class="aside-modeldata">
         <h3>Описание модели</h3>
         <p>{{ object.comment }}</p>
-
+        {% if object.free == True %}
         <ul>
             {% for text in requesttext %}
             <li><a href="{{ text.get_absolute_url }}">{{ text.title }}</a></li>
             {% endfor %}
         </ul>
+        {% else %}
+            {% if user.is_authenticated == False %}
+        <p><a href="{% url 'reg' %}">Зарегистрируйтесь</a> на сайте и купите
+            подписку, чтобы просмотреть этот курс</p>
+            {% else %}
+                {% if user.profile.account_type == "Полный пакет" %}
+                <ul>
+                    {% for text in requesttext %}
+                    <li><a href="{{ text.get_absolute_url }}">{{ text.title }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                    <p>Необходимо купить <a href="{% url 'tarrifs' %}">подписку</a> на
+                        сайте, чтобы просмотреть этот курс</p>
+                {% endif %}
+            {% endif %}
+        {% endif %}
     </div>
 
 </div>
