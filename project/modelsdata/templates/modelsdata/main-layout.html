@@ -16,6 +16,16 @@
 		  <nav class="my-2 my-md-0 mr-md-3">
 			<a class="p-2 text-dark" href="{% url 'home' %}">Главная</a>
 			<a class="p-2 text-dark" href="#">Тарифы</a>
+
+<!--			   Добавим кнопки-->
+			{% if user.is_authenticated %}
+			<a href="{% url 'profile' %}" class="btn btn-outline-success mr-2">Профиль</a>
+			<a href="{% url 'exit' %}" class="btn btn-outline-danger">Выйти</a>
+			{% else %}
+			<a href="{% url 'user' %}" class="btn btn-outline-success mr-2">Войти</a>
+			<a href="{% url 'reg' %}" class="btn btn-outline-warning">Регистрация</a>
+			{% endif %}
+
 		  </nav>
 		</div>
 		
