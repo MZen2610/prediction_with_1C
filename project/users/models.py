@@ -9,7 +9,7 @@ TYPE_CHOICES = (
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    img = models.ImageField(default='media/default.png', upload_to='user_images')
+    img = models.ImageField(default='default.png', upload_to='user_images')
     account_type = models.CharField(choices=TYPE_CHOICES,
                                     default='Бесплатный пакет', max_length=30)
 
